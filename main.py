@@ -1,10 +1,16 @@
-names_list = ["Артемий", "Борис", "Влад", "Гоша", "Дима", "Евгений", "Женя", "Захар"]
+num_vd = int(input("Количество видеокарт: "))
+vd_list = []
 
-day1_names_list = []
-for index, name in enumerate(names_list):
-    if index % 2 == 0:
-        day1_names_list.append(name)
+for index in range(1, num_vd + 1):
+    print("Видеокарта",  str(index) + ":", end= " ")
+    vd = int(input())
+    vd_list.append(vd)
 
-print("Первый день:", day1_names_list)
+new_vd_list = []
+for vd in vd_list:
+    vd = str(vd)
+    if int(vd[2]) <= 7:
+        new_vd_list.append(int(vd))
 
-
+print("\nСтарый список видеокарт:", vd_list)
+print("Новый список видеокарт:", new_vd_list)
