@@ -1,16 +1,41 @@
-num_vd = int(input("Количество видеокарт: "))
-vd_list = []
+films = [
+    "Крепкий орешек",
+    "Назад в будущее",
+    "Таксист",
+    "Леон",
+    "Богемская рапсодия",
+    "Город грехов",
+    "Мементо",
+    "Отступники",
+    "Деревня",
+]
 
-for index in range(1, num_vd + 1):
-    print("Видеокарта",  str(index) + ":", end= " ")
-    vd = int(input())
-    vd_list.append(vd)
+favorite_films = []
 
-new_vd_list = []
-for vd in vd_list:
-    vd = str(vd)
-    if int(vd[2]) <= 7:
-        new_vd_list.append(int(vd))
+count_user_films = int(input("Сколько фильмов хотите добавить? "))
+status = False
+for _ in range(count_user_films):
+    user_name_film = input("Введите название фильма: ")
 
-print("\nСтарый список видеокарт:", vd_list)
-print("Новый список видеокарт:", new_vd_list)
+    for name_film in films:
+        if user_name_film.casefold() == name_film.casefold():
+            favorite_films.append(user_name_film)
+            status = True
+            break
+        else:
+            status = False
+
+    if status == False:
+        print("Ошибка: фильма", user_name_film, "у нас нет :(")
+
+
+print("\nВаш список любимых фильмов:", end=" ")
+for index, favorite_user_film in enumerate(favorite_films):
+    if index == len(favorite_films) - 1:
+        print(favorite_user_film)
+    else:
+        print(favorite_user_film, end=", ")
+
+
+
+
