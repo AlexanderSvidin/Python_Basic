@@ -1,8 +1,10 @@
-number = int(input("Введите число: "))
-odd_nums_list = []
+names_list = ["Артемий", "Борис", "Влад", "Гоша", "Дима", "Евгений", "Женя", "Захар"]
 
-for num in range(1, number + 1):
-    if num % 2 != 0:
-        odd_nums_list.append(num)
+day1_names_list = []
+for index, name in enumerate(names_list):
+    if index % 2 == 0:
+        day1_names_list.append(name)
 
-print("Список из нечётных чисел от одного до N:", odd_nums_list)
+print("Первый день:", day1_names_list)
+
+
