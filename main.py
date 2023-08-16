@@ -1,41 +1,21 @@
-films = [
-    "Крепкий орешек",
-    "Назад в будущее",
-    "Таксист",
-    "Леон",
-    "Богемская рапсодия",
-    "Город грехов",
-    "Мементо",
-    "Отступники",
-    "Деревня",
-]
+count_containers = int(input("Количество контейнеров: "))
+containers_list = []
 
-favorite_films = []
+for _ in range(count_containers):
+    mass_container = int(input("Введите вес контейнера: "))
 
-count_user_films = int(input("Сколько фильмов хотите добавить? "))
-status = False
-for _ in range(count_user_films):
-    user_name_film = input("Введите название фильма: ")
+    while mass_container >= 200: # Контроль ввода
+        print("Ошибка! Масса контейнера не должна превышать 200.")
+        mass_container = int(input("Попробуйте ещё раз: "))
 
-    for name_film in films:
-        if user_name_film.casefold() == name_film.casefold():
-            favorite_films.append(user_name_film)
-            status = True
-            break
-        else:
-            status = False
+    containers_list.append(mass_container)
 
-    if status == False:
-        print("Ошибка: фильма", user_name_film, "у нас нет :(")
+mass_new_container = int(input("Введите вес нового контейнера: "))
+index_new_container = 0
 
+while containers_list[index_new_container] >= mass_new_container:
+    index_new_container += 1
 
-print("\nВаш список любимых фильмов:", end=" ")
-for index, favorite_user_film in enumerate(favorite_films):
-    if index == len(favorite_films) - 1:
-        print(favorite_user_film)
-    else:
-        print(favorite_user_film, end=", ")
-
-
+print("Номер, который получит новый контейнер:", index_new_container + 1)
 
 
