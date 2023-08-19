@@ -1,21 +1,12 @@
-count_containers = int(input("Количество контейнеров: "))
-containers_list = []
+# получение списка и числа K от пользователя
+lst = input("Введите список через пробел: ").split()
+K = int(input("Введите число K: "))
 
-for _ in range(count_containers):
-    mass_container = int(input("Введите вес контейнера: "))
+# если K больше длины списка, то сделать K равным остатку от деления K на длину списка
+K %= len(lst)
 
-    while mass_container >= 200: # Контроль ввода
-        print("Ошибка! Масса контейнера не должна превышать 200.")
-        mass_container = int(input("Попробуйте ещё раз: "))
+# создание нового списка с циклическим сдвигом на K позиций
+new_lst = lst[-K:] + lst[:-K]
 
-    containers_list.append(mass_container)
-
-mass_new_container = int(input("Введите вес нового контейнера: "))
-index_new_container = 0
-
-while containers_list[index_new_container] >= mass_new_container:
-    index_new_container += 1
-
-print("Номер, который получит новый контейнер:", index_new_container + 1)
-
-
+# вывод полученного списка
+print(new_lst)
