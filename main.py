@@ -1,15 +1,17 @@
-# Задание 1. Страшный код
-a = [1, 5, 3]
-b = [1, 5, 1, 5]
-c = [1, 3, 1, 5, 3, 3]
+# Задание 2. Уникальное объединение списков
 
-a.extend(b)
-print('Количество цифр 5 при первом объединении:', a.count(5))
+def merge_sorted_lists(array_1, array_2):
+    merge_array = array_1 + array_2
+    merge_array.sort()
 
-for elem in a:
-    if elem == 5:
-        a.remove(5)
+    for index in range(len(merge_array) - 2):
+        if merge_array[index] == merge_array[index + 1]:
+            merge_array.pop(index)
 
-a.extend(c)
-print('Количество цифр 3 при втором объединении:', a.count(3))
-print('Итоговый список:', a)
+    return merge_array
+
+
+list1 = [1, 3, 5, 7, 9]
+list2 = [2, 4, 5, 6, 8, 10]
+merged = merge_sorted_lists(list1, list2)
+print(merged)
