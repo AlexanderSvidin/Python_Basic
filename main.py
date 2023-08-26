@@ -1,18 +1,26 @@
-shop = [['каретка', 1200], ['шатун', 1000], ['седло', 300], ['педаль', 100], ['седло', 1500], ['рама', 12000],
-        ['обод', 2000], ['шатун', 200], ['седло', 2700]]
+# Задание 4. Вечеринка
 
-def details_status(detail):
-    count_detail = 0
-    detail_cost = 0
+guests = ['Петя', 'Ваня', 'Саша', 'Лиза', 'Катя']
 
-    for product in shop:
-        if product[0].casefold() == detail.casefold():
-            count_detail += 1
-            detail_cost += product[1]
+while True:
+    print('\nСейчас на вечеринке', len(guests), 'человек:', guests)
+    status_party = input('Гость пришёл или ушёл? ')
 
-    print('\nКоличество деталей:', count_detail)
-    print('Общая стоимость:', detail_cost)
+    if status_party.casefold() == 'Пора спать'.casefold():
+        print('Вечеринка закончилась, все легли спать.')
+        break
 
-detail_name = input('Введите название детали: ')
+    else:
+        name_new_guest = input('Имя гостя: ')
 
-details_status(detail_name)
+        if status_party.casefold() == 'пришёл'.casefold() and len(guests) < 6:
+            print('Привет,', name_new_guest + '!')
+            guests.append(name_new_guest)
+
+        elif status_party.casefold() == 'ушёл'.casefold():
+            print('Пока,', name_new_guest + '!')
+            guests.remove(name_new_guest)
+
+        else:
+            print('Прости,', name_new_guest + ', но мест нет.')
+
