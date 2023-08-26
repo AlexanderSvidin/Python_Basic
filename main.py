@@ -1,29 +1,23 @@
-# Задание 6. Ролики
+# Задание 7. Считалка
 
-num_rollerblade = int(input('Количество роликов: '))
-size_rollerblade_list = []
+num_people = int(input('Кол-во человек: '))
+number = int(input('Какое число в считалке?: '))
+print('Значит, выбывает каждый', str(number) + '-й человек')
 
-for i_rollerblade in range(1, num_rollerblade + 1):
-    print('Размер пары', str(i_rollerblade) + ':', end=' ')
-    size_rollerblade = int(input())
-    size_rollerblade_list.append(size_rollerblade)
+circle_list = list(range(1, num_people + 1))
+count = 0
 
+while len(circle_list) > 1:
+    print('\nТекущий круг людей: ', circle_list)
+    print('Начало счёта с номера:', circle_list[count])
 
-num_people = int(input('\nКоличество людей: '))
-foot_size_list = []
+    count = (count + number - 1) % len(circle_list)
 
-for i_person in range(1, num_people + 1):
-    print('Размер ноги человека', str(i_person) + ':', end=' ')
-    foot_size = int(input())
-    foot_size_list.append(foot_size)
+    if circle_list[count] == circle_list[-1]:
+        print('Выбывает человек под номером:', circle_list.pop(count))
+        count = 0
 
+    else:
+        print('Выбывает человек под номером:', circle_list.pop(count))
 
-count_succesful = 0 # количество людей, которые могут взять ролики
-for foot_size in foot_size_list:
-    if size_rollerblade_list.count(foot_size) > 0:
-        count_succesful += 1
-        size_rollerblade_list.remove(foot_size)
-
-print('Наибольшее количество людей, которые могут взять ролики:', count_succesful)
-
-
+print('\nОстался человек под номером:', circle_list[0])
