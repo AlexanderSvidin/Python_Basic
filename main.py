@@ -1,44 +1,29 @@
-violator_songs = [
+# Задание 6. Ролики
 
-['World in My Eyes', 4.86],
+num_rollerblade = int(input('Количество роликов: '))
+size_rollerblade_list = []
 
-['Sweetest Perfection', 4.43],
+for i_rollerblade in range(1, num_rollerblade + 1):
+    print('Размер пары', str(i_rollerblade) + ':', end=' ')
+    size_rollerblade = int(input())
+    size_rollerblade_list.append(size_rollerblade)
 
-['Personal Jesus', 4.56],
 
-['Halo', 4.9],
+num_people = int(input('\nКоличество людей: '))
+foot_size_list = []
 
-['Waiting for the Night', 6.07],
+for i_person in range(1, num_people + 1):
+    print('Размер ноги человека', str(i_person) + ':', end=' ')
+    foot_size = int(input())
+    foot_size_list.append(foot_size)
 
-['Enjoy the Silence', 4.20],
 
-['Policy of Truth', 4.76],
+count_succesful = 0 # количество людей, которые могут взять ролики
+for foot_size in foot_size_list:
+    if size_rollerblade_list.count(foot_size) > 0:
+        count_succesful += 1
+        size_rollerblade_list.remove(foot_size)
 
-['Blue Dress', 4.29],
-
-['Clean', 5.83]
-
-]
-
-def time_song(song_title):
-    time = 0
-
-    for song in violator_songs:
-        if song[0].casefold() == song_title.casefold():
-            time += song[1]
-            return time
-
-    print('Песни', song_title, 'нет в списке песен.')
-    return 0
-
-count_songs = int(input('Сколько песен выбрать? '))
-time_songs = 0
-
-for index_song in range(1, count_songs + 1):
-    print('Название', str(index_song) + '-й песни:', end=" ")
-    song_title = input()
-    time_songs += time_song(song_title)
-
-print('Общее время звучания песен —', round(time_songs, 2), 'минуты')
+print('Наибольшее количество людей, которые могут взять ролики:', count_succesful)
 
 
