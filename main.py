@@ -1,17 +1,18 @@
-# Задание 2. Уникальное объединение списков
+shop = [['каретка', 1200], ['шатун', 1000], ['седло', 300], ['педаль', 100], ['седло', 1500], ['рама', 12000],
+        ['обод', 2000], ['шатун', 200], ['седло', 2700]]
 
-def merge_sorted_lists(array_1, array_2):
-    merge_array = array_1 + array_2
-    merge_array.sort()
+def details_status(detail):
+    count_detail = 0
+    detail_cost = 0
 
-    for index in range(len(merge_array) - 2):
-        if merge_array[index] == merge_array[index + 1]:
-            merge_array.pop(index)
+    for product in shop:
+        if product[0].casefold() == detail.casefold():
+            count_detail += 1
+            detail_cost += product[1]
 
-    return merge_array
+    print('\nКоличество деталей:', count_detail)
+    print('Общая стоимость:', detail_cost)
 
+detail_name = input('Введите название детали: ')
 
-list1 = [1, 3, 5, 7, 9]
-list2 = [2, 4, 5, 6, 8, 10]
-merged = merge_sorted_lists(list1, list2)
-print(merged)
+details_status(detail_name)
