@@ -1,26 +1,44 @@
-# Задание 4. Вечеринка
+violator_songs = [
 
-guests = ['Петя', 'Ваня', 'Саша', 'Лиза', 'Катя']
+['World in My Eyes', 4.86],
 
-while True:
-    print('\nСейчас на вечеринке', len(guests), 'человек:', guests)
-    status_party = input('Гость пришёл или ушёл? ')
+['Sweetest Perfection', 4.43],
 
-    if status_party.casefold() == 'Пора спать'.casefold():
-        print('Вечеринка закончилась, все легли спать.')
-        break
+['Personal Jesus', 4.56],
 
-    else:
-        name_new_guest = input('Имя гостя: ')
+['Halo', 4.9],
 
-        if status_party.casefold() == 'пришёл'.casefold() and len(guests) < 6:
-            print('Привет,', name_new_guest + '!')
-            guests.append(name_new_guest)
+['Waiting for the Night', 6.07],
 
-        elif status_party.casefold() == 'ушёл'.casefold():
-            print('Пока,', name_new_guest + '!')
-            guests.remove(name_new_guest)
+['Enjoy the Silence', 4.20],
 
-        else:
-            print('Прости,', name_new_guest + ', но мест нет.')
+['Policy of Truth', 4.76],
+
+['Blue Dress', 4.29],
+
+['Clean', 5.83]
+
+]
+
+def time_song(song_title):
+    time = 0
+
+    for song in violator_songs:
+        if song[0].casefold() == song_title.casefold():
+            time += song[1]
+            return time
+
+    print('Песни', song_title, 'нет в списке песен.')
+    return 0
+
+count_songs = int(input('Сколько песен выбрать? '))
+time_songs = 0
+
+for index_song in range(1, count_songs + 1):
+    print('Название', str(index_song) + '-й песни:', end=" ")
+    song_title = input()
+    time_songs += time_song(song_title)
+
+print('Общее время звучания песен —', round(time_songs, 2), 'минуты')
+
 
